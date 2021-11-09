@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+    webtech-database:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: adoption
+            MYSQL_ROOT_PASSWORD: secret
+        ports:
+            - "3306:3306"
+    database-explorer:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 8036:80
+        environment:
+            PMA_ARBITRARY: 1
+            PMA_HOST: webtech-database
+            PMA_PORT: 3306
+            PMA_USER: root
+            PMA_PASSWORD: secret

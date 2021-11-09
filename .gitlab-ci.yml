@@ -1,0 +1,42 @@
+image: chilio/laravel-dusk-ci:php-8.0
+
+before_script:
+  - composer install
+  - cp .env.example .env
+  - sed -i 's/DB_HOST=.*/DB_HOST=mysql-test/' .env
+  - sed -i 's/DB_DATABASE=.*/DB_DATABASE=webtech/' .env
+  - sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
+  - sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=secret/' .env
+  - sed -i 's>APP_URL=.*>APP_URL=http://localhost>' .env
+  - start-nginx-ci-project
+  - configure-laravel
+
+test:
+  script:
+    - php artisan dusk
+    - php artisan test
+  timeout: 5m
+  artifacts:
+    paths:
+      - ./storage/logs # for debugging
+      - ./tests/Browser/screenshots
+      - ./tests/Browser/console
+    expire_in: 7 days
+    when: always
+
+services:
+  - name: mysql:5.7
+    alias: mysql-test
+
+cache:
+  paths:
+    - vendor/
+    - node_modules/
+
+variables:
+  MYSQL_DATABASE: webtech
+  MYSQL_ROOT_PASSWORD: secret
+  DB_DATABASE: webtech
+  DB_USERNAME: root
+  DB_PASSWROD: secret
+  DB_HOST: mysql-test
