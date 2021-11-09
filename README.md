@@ -9,7 +9,7 @@ You must follow the instructions **to the letter**, your application will be tes
 This assignment can be done individually or in groups of two people. Because of the time constraint of the assignment and [pair programming practices](https://en.wikipedia.org/wiki/Pair_programming), we heavily encourage you to work in groups. To create groups, you have to use the group feature in our automatic testing application (*ie,* it is not necessary to create groups in itslearning). If you want to work in pairs but you do not know anyone else in the course who wants that, you can use the dedicated channel in Discord to look for a partner.
 
 <span style="color:red">**Disclaimer:** Unless otherwise instructed, do not in any way, modify the contents of the `/tests` directory or the `.gitlab-ci.yml` file. Doing so will be considered cheating, and will in the best case result in your assignment being failed.</span>
-**We have seen projects that changed some of these files in the previous assignment. For this assignment, we are not going to be more strict.**
+**We have seen projects that changed some of these files in the previous assignment. For this assignment, we are going to be more strict.**
 
 ## Setup
 
@@ -58,8 +58,6 @@ _Hint: your JetBrains Student subscription comes bundled with __DataGrip__, whic
 
 Every time you push your code to our source control (gitlab.sdu.dk) (which you will have to do to pass), your code will be validated to see if it meets the requirements of this assignment. This can be slow, especially if other people are also doing it simultaneously (then you will most likely be put in a queue). To mitigate this, you can run your tests locally. 
 
-
-
 #### Running browser tests
 
 You should run our browser tests using Laravel Dusk.
@@ -69,6 +67,12 @@ The first time you run the tests on your machine, you will have to install the l
 In another terminal, run `php artisan serve` - this is needed as dusk actively uses the server to test your implementation. Make sure the server is up and running every time you test your implementation.
 
 In your main terminal, run: `php artisan dusk` and `php artisan test` - this will start running your tests.
+
+### Debugging Screenshots
+
+The tests are by default running in sequentiel order with the ``php artisan dusk` command. However, you can specify a filter to test specific functionality of the application with the php artisan dusk --filter <test-name> parameter - these are also provided for each section of the assignment
+
+Naturally, when the tests are running, the developer doesn't have any visual insight of progress of the test, unless using the `--browse` argument is included. However, a screenshot will be generated in the folder: Tests/Browser/Screenshots/..., which might be helpful in debugging the current failing test.
 
 ## Logic
 
