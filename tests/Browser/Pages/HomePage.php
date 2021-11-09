@@ -171,6 +171,8 @@ class HomePage extends Page
         $browser->assertPresent('.adoption-mine');
         $browser->click('.adoption-mine');
         $browser->assertPathIs('/adoptions/mine');
+        $browser->assertDontSee(Adoption::find(1)->name);
+        $browser->assertDontSee(Adoption::find(2)->name);
         $browser->assertSee(Adoption::find(3)->name);
         $browser->assertSee(Adoption::find(4)->name);
         $browser->visit('/adoptions/3');
