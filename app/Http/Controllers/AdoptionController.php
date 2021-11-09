@@ -19,16 +19,23 @@ class AdoptionController extends Controller
         $validated = $request->validate([
             'name'        => ['required'],
             'description' => ['required'],
-            'image'       => ['required', 'file', 'image']
+            'image'       => ['file', 'image']
         ]);
 
-        $filename = Str::random(32) . "." . $request->file('image')->extension();
-        $request->file('image')->move('imgs/uploads', $filename);
 
         $adoption = new Adoption();
-        $adoption->name = $validated['name'];
+        if ($request->has('image'))
+        {
+            $filename = Str::random(32) . "." . $request->file('image')->extension();
+            $request->file('image')->move('imgs/uploads', $filename);
+            $adoption->image_path = "imgs/uploads/$filename";
+        }
+        else
+            $adoption->image_path = "imgs/demo/4.jpg";
+        $adoption->name        = $validated['name'];
         $adoption->description = $validated['description'];
-        $adoption->image_path = "imgs/uploads/$filename";
+        $adoption->listed_by   = auth()->id();
+        $adoption->save();
 
         /*
         |-----------------------------------------------------------------------
@@ -37,7 +44,7 @@ class AdoptionController extends Controller
         | This is done using the listed_by field from the user column in the database.
         |-----------------------------------------------------------------------
         */
-        
+
     }
 
     public function show(Adoption $adoption)

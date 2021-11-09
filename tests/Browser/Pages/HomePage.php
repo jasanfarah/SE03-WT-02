@@ -130,7 +130,6 @@ class HomePage extends Page
         $browser->assertPresent('.pet-image');
         $browser->type('.pet-name','Oliver');
         $browser->type('.pet-description', 'A beautiful cat');
-        $browser->attach('.pet-image', 'public\imgs\demo\2.jpg');
         $browser->assertPresent('.adoption-submit');
         $browser->click('.adoption-submit');
         $browser->assertPathIs('/');
