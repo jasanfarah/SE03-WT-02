@@ -334,6 +334,10 @@ The form that contains the submit button with class `pet-adopt` should not appea
 `app/Http/Controllers/AdoptionController.php`
 you should modify the action `mine`, which is in charge list all adoptions of the logged user.
 
+#### Tests
+
+`php artisan dusk --filter showCurrentUserAdoptions` tests if the authenticated user is able to see their adoptions
+
 ### 1 Authorization. Users permissions
 
 In this assignment, we test the access of users to the different features of your application. For example, guest users are not allowed to adopt pets or list the pets they have adopted!
