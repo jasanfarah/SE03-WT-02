@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class PolicyTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_user_cannot_adopt_own()
     {
         $user = User::factory()->create();
