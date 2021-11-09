@@ -37,8 +37,7 @@ class AdoptionController extends Controller
         | This is done using the listed_by field from the user column in the database.
         |-----------------------------------------------------------------------
         */
-
-        return redirect()->route('adoptions.show', [$adoption->id])->with('success', "Post for $adoption->name created successfully");
+        
     }
 
     public function show(Adoption $adoption)
