@@ -279,6 +279,7 @@ For this task, you should modify the action `store`, which is in charge to creat
 #### Tests
 
 `php artisan dusk --filter userCanCreateAdoptionPost` - tests that a logged in user is able to create an adoption post.
+
 `php artisan dusk --filter guestCannotCreateAdoptionPost` - tests that guests are redirected to the login page if they try to access the route
 
 ### 5: [User] Adopt pets
