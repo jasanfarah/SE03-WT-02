@@ -298,7 +298,7 @@ Register users should be the only ones capable of adopting pets.
 7. On the home page, the following message is displayed: `Pet $petName adopted successfully`. This message is displayed in the HTML element with class `alert-success`
 8. The adopted pet should not be included in the list of pet for adoption.
 
-When posting, trying to adopt your own pet, should return a 403 status code.
+When posting, trying to adopt your own pet, should return a __403__ status code. Hint: use the `AdoptionPolicy`
 
 #### Files to modify
 
