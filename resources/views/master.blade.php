@@ -38,7 +38,7 @@
                 <!-- Task 1 Authorization, elements should appear for guest users only -->
                     <li class="nav-item">
                         <!-- Task 2 Guest, step 2: add correct link in href -->
-                        <a class="nav-link register-link" href="#">Register</a>
+                        <a class="nav-link register-link" href="{{ route('register') }}">Register</a>
                     </li>
                     <li class="nav-item">
                         <!-- Task 3 Guest, step 2: add correct link in href -->
