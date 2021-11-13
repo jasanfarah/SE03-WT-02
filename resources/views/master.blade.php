@@ -48,8 +48,10 @@
 
                 <!-- Task 1 Authorization, elements should appear for logged users only -->
                     <!-- Task 1 User, step 1: add name of logged user-->
-                    <span class="navbar-text text-black me-4 user-name">user name</span>
-                    <li class="nav-item">
+                @auth()
+                <span class="navbar-text text-black me-4 user-name">{{auth()->user()->name}}</span>
+                @endauth
+                <li class="nav-item">
                         <!-- Task 2 User, step 3: add correct link-->
                         <a class="nav-link logout-link" href="#">Log out</a>
                     </li>
