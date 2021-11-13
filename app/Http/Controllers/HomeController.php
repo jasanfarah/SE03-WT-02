@@ -23,11 +23,17 @@ class HomeController extends Controller
 
     public function doLogin(Request $request)
     {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 3 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+        $this->validate($request,[
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+
+        if (!auth()->attempt($request->only('email', 'password'))){
+            return back()->with('status', 'User not valid');
+        }
+
+        return redirect()->route('home');
+
     }
 
     public function register()
