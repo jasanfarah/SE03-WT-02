@@ -12,12 +12,25 @@
             </div>
             <div class="card-body">
                 <!-- Task 3 Guest, step 5: add the HTTP method and url as instructed-->
-                <form method="" action="#">
+                <form action="{{ route('doLogin') }}" method="post">
                     @csrf
-                    <!-- Task 3 Guest, step 3: add login fields as instructed-->
-                    <!-- Tip: you can use the same style as the registration form -->
+                    {{ method_field('POST') }}
+
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" name="email" class="form-control email" id="email" placeholder="Type your email">
+
+                    @if($errors->has('email'))
+                        <div class="form-text text-danger">{{ $errors->first('email') }}</div>
+                    @endif
+
+                    <br>
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control password" id="password" placeholder="Type your password">
+
+                    <br>
+
                     <div class="d-flex justify-content-between align-items-center">
-                        <!-- Task 3 Guest, step 4: add submit button-->
+                        <button class="login-submit" type="submit" value="Submit">Submit</button>
                     </div>
                 </form>
             </div>
