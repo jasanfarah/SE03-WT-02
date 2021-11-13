@@ -6,6 +6,7 @@ use App\Models\Adoption;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -22,11 +23,17 @@ class HomeController extends Controller
 
     public function doLogin(Request $request)
     {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 3 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
+        $this->validate($request,[
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+
+        if (!auth()->attempt($request->only('email', 'password'))){
+            return back()->with('status', 'User not valid');
+        }
+
+        return redirect()->route('home');
+
     }
 
     public function register()
@@ -36,6 +43,20 @@ class HomeController extends Controller
 
     public function doRegister(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+        User::create([
+            'name' => $request -> name,
+            'email' => $request -> email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        Auth::attempt($request -> only('email','password'));
+        return redirect()->route('home');
+
         /*
         |-----------------------------------------------------------------------
         | Task 2 Guest, step 5. You should implement this method as instructed
