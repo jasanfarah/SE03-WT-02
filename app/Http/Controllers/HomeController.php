@@ -6,6 +6,7 @@ use App\Models\Adoption;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -36,6 +37,17 @@ class HomeController extends Controller
 
     public function doRegister(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+        User::create([
+            'name' => $request -> name,
+            'email' => $request -> email,
+            'password' => bcrypt($request->password)
+        ]);
+
         /*
         |-----------------------------------------------------------------------
         | Task 2 Guest, step 5. You should implement this method as instructed
