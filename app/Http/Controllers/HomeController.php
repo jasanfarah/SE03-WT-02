@@ -47,6 +47,7 @@ class HomeController extends Controller
             'email' => $request -> email,
             'password' => bcrypt($request->password)
         ]);
+        return redirect()->route('home');
 
         /*
         |-----------------------------------------------------------------------
