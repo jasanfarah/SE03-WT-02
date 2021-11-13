@@ -16,6 +16,7 @@
                                     <div class="form-text text-danger">{{ $errors->first('name') }}</div>
                                 @endif
                             </div>
+
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control pet-description" id="description" rows="2" name="description">{{ old('description') }}</textarea>
@@ -23,6 +24,7 @@
                                     <div class="form-text text-danger">{{ $errors->first('description') }}</div>
                                 @endif
                             </div>
+
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Image</label>
                                 <input class="form-control pet-image" type="file" id="formFile" name="image">
@@ -30,6 +32,7 @@
                                     <div class="form-text text-danger">{{ $errors->first('image') }}</div>
                                 @endif
                             </div>
+
                             <button type="submit" class="btn btn-primary adoption-submit">Create</button>
                         </form>
                     </div>

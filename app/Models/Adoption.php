@@ -14,19 +14,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property int listed_by
  * @property int|null adopted_by
  */
-class Adoption extends Model
-{
+class Adoption extends Model {
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'image_path'];
 
-    public function listedBy()
-    {
+    public function listedBy() {
         return $this->belongsTo(User::class, 'listed_by');
     }
 
-    public function scopeUnadopted(Builder $query)
-    {
+    public function scopeUnadopted(Builder $query) {
         return $query->whereNull('adopted_by');
     }
 }

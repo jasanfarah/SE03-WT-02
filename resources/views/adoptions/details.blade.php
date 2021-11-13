@@ -8,6 +8,7 @@
                     <div class="card-header">
                         Adopt me
                     </div>
+
                     <div class="card-body">
                         <h5 class="card-title pet-name">{{ $adoption->name }}</h5>
                         <p class="card-text pet-description">{{ $adoption->description }}</p>
@@ -34,6 +35,7 @@
                         @endif
                     </div>
                 </div>
+
             </div>
             <div class="col-6">
                 <div class="ratio ratio-1x1 ">

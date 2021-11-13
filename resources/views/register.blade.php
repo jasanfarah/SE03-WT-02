@@ -10,6 +10,7 @@
             <div class="card-header">
                 <h3 class="mb-0">Register</h3>
             </div>
+
             <div class="card-body">
                 <!-- Task 2 Guest, step 5: add the HTTP method and url as instructed-->
                 <form method="POST" action="{{ route('doRegister') }}">

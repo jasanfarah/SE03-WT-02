@@ -8,15 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class AdoptionController extends Controller
-{
-    public function create()
-    {
+class AdoptionController extends Controller{
+
+    public function create() {
         return view('adoptions.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $validated = $request->validate([
             'name'        => ['required'],
             'description' => ['required'],
@@ -25,8 +23,7 @@ class AdoptionController extends Controller
 
 
         $adoption = new Adoption();
-        if ($request->has('image'))
-        {
+        if ($request->has('image'))  {
             $filename = Str::random(32) . "." . $request->file('image')->extension();
             $request->file('image')->move('imgs/uploads', $filename);
             $adoption->image_path = "imgs/uploads/$filename";
@@ -48,13 +45,11 @@ class AdoptionController extends Controller
 
     }
 
-    public function show(Adoption $adoption)
-    {
+    public function show(Adoption $adoption) {
         return view('adoptions.details', ['adoption' => $adoption]);
     }
 
-    public function adopt(Adoption $adoption)
-    {
+    public function adopt(Adoption $adoption) {
         $user = Auth::user();
         $adoption->adopted_by = $user->id;
         $adoption->save();
@@ -63,8 +58,7 @@ class AdoptionController extends Controller
     }
 
 
-    public function mine()
-    {
+    public function mine() {
         /*
         |-----------------------------------------------------------------------
         | Task 6 User, step 3.
