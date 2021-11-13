@@ -13,7 +13,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('imgs/paw.svg') }}" alt="" class="me-2" style="height: 24px"/>
-            <span>{Name's} Pet Shelter</span>
+            <span>SDU's Pet Shelter</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
                 </li>
 
                 <!-- Task 1 Authorization, elements should appear for logged users only -->
-                
+
                     <li class="nav-item">
                         <a class="nav-link adoption-mine" href="{{ route('adoptions.mine') }}">My Adoptions</a>
                     </li>
@@ -42,7 +42,7 @@
                     </li>
                     <li class="nav-item">
                         <!-- Task 3 Guest, step 2: add correct link in href -->
-                        <a class="nav-link login-link" href="#">Login</a> 
+                        <a class="nav-link login-link" href="#">Login</a>
                     </li>
                 <!-- Task 1 Authorization-->
 
