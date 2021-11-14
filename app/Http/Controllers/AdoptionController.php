@@ -42,6 +42,7 @@ class AdoptionController extends Controller{
         | This is done using the listed_by field from the user column in the database.
         |-----------------------------------------------------------------------
         */
+        return redirect()->home()->with('success', "Post for $adoption->name created successfully");
 
     }
 
