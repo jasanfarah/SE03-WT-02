@@ -66,6 +66,7 @@ class AdoptionController extends Controller{
         | You should assing the $adoptions variable with a list of all adoptions of logged user.
         |-----------------------------------------------------------------------
         */
+        $adoptions = Adoption::where('adopted_by',Auth::user()->id)->get();
         return view('adoptions.list', ['adoptions' => $adoptions, 'header' => 'My Adoptions']);
 
     }
