@@ -25,7 +25,7 @@ class HomeController extends Controller {
             'password'=>'required'
         ]);
 
-        if (!auth()->attempt($request->only('email', 'password'))) {
+        if (!Auth::attempt($request->only('email', 'password'))) {
             return back()->with('status', 'User not valid');
         }
 
