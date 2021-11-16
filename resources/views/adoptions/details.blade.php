@@ -13,23 +13,17 @@
                         <h5 class="card-title pet-name">{{ $adoption->name }}</h5>
                         <p class="card-text pet-description">{{ $adoption->description }}</p>
                         <p>Listed by: <b>{{ $adoption->listedBy->name }}</b></p>
-                        <!-- Task 5 User, step 4: this form should not appear if the logged user is giving for adoption this pet -->
-                        <!-- Task 6 User, step 4: this form should not appear if the pet was already adopted -->
-{{--
-The form that contains the submit button with class pet-adopt should not appear in your code
-if the pet was given for adoption, users should not be able to adopt pets already given for adoption.
---}}
-                        @auth()
 
-                        @if($adoption->listedBy->id != auth()->id())
-                            <form method="post" action="{{ route('adoptions.adopt', [$adoption->id]) }}">
-                                @csrf
-                                @if($adoption->adopted_by==null))
-                                <button type="submit" class="btn btn-success pet-adopt">Adopt Now
-                                    @endif
-                                </button>
-                            </form>
-                        @endif
+                        @auth()
+                            @if($adoption->listedBy->id != auth()->id())
+                                <form method="post" action="{{ route('adoptions.adopt', [$adoption->id]) }}">
+                                    @csrf
+                                    @if($adoption->adopted_by==null))
+                                    <button type="submit" class="btn btn-success pet-adopt">Adopt Now
+                                        @endif
+                                    </button>
+                                </form>
+                            @endif
                         @endauth
 
                         @if($adoption->adopted_by != null)
@@ -39,6 +33,7 @@ if the pet was given for adoption, users should not be able to adopt pets alread
                                 <p class="text-danger">This pet has already been adopted.</p>
                             @endif
                         @endif
+
                     </div>
                 </div>
 

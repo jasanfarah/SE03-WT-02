@@ -51,12 +51,6 @@ class HomeController extends Controller {
 
         Auth::attempt($request -> only('email','password'));
         return redirect()->route('home');
-
-        /*
-        |-----------------------------------------------------------------------
-        | Task 2 Guest, step 5. You should implement this method as instructed
-        |-----------------------------------------------------------------------
-        */
     }
 
     public function logout() {

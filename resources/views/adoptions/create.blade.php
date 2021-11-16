@@ -9,6 +9,7 @@
                     <div class="card-body">
                         <form method="post" action="{{ route('adoptions.store') }}" enctype="multipart/form-data">
                             @csrf
+
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name of pet</label>
                                 <input type="text" class="form-control pet-name" id="name" value="{{ old('name') }}" name="name">

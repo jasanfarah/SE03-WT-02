@@ -12,7 +12,6 @@
             </div>
 
             <div class="card-body">
-                <!-- Task 3 Guest, step 5: add the HTTP method and url as instructed-->
                 <form action="{{ route('doLogin') }}" method="post">
                     @csrf
                     {{ method_field('POST') }}

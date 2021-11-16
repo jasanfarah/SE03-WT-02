@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class AdoptionController extends Controller{
+class AdoptionController extends Controller {
 
     public function create() {
         return view('adoptions.create');
@@ -35,13 +35,6 @@ class AdoptionController extends Controller{
         $adoption->listed_by   = auth()->id();
         $adoption->save();
 
-        /*
-        |-----------------------------------------------------------------------
-        | Task 4 User, step 5.
-        | The $adoption variable should be assigned to the logged user.
-        | This is done using the listed_by field from the user column in the database.
-        |-----------------------------------------------------------------------
-        */
         return redirect()->home()->with('success', "Post for $adoption->name created successfully");
 
     }
@@ -58,14 +51,7 @@ class AdoptionController extends Controller{
         return redirect()->home()->with('success', "Pet $adoption->name adopted successfully");
     }
 
-
     public function mine() {
-        /*
-        |-----------------------------------------------------------------------
-        | Task 6 User, step 3.
-        | You should assing the $adoptions variable with a list of all adoptions of logged user.
-        |-----------------------------------------------------------------------
-        */
         $adoptions = Adoption::where('adopted_by',Auth::user()->id)->get();
         return view('adoptions.list', ['adoptions' => $adoptions, 'header' => 'My Adoptions']);
 
