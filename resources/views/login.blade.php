@@ -28,6 +28,9 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control password" id="password" placeholder="Type your password">
 
+                    @if($errors->has('password'))
+                        <div class="form-text text-danger">{{ $errors->first('password') }}</div>
+                    @endif
                     <br>
 
                     <div class="d-flex justify-content-between align-items-center">
