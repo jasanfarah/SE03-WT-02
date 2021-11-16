@@ -5,16 +5,16 @@ namespace App\Policies;
 use App\Models\Adoption;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use \Illuminate\Auth\Access\Response;
 
 /*
 |-----------------------------------------------------------------------
-| Task 1 Authorization. 
+| Task 1 Authorization.
 | You can use to policy for authorize adoptions
 |-----------------------------------------------------------------------
 */
 
-class AdoptionPolicy
-{
+class AdoptionPolicy{
     use HandlesAuthorization;
 
     /**
@@ -22,10 +22,16 @@ class AdoptionPolicy
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         //
     }
 
-    
+    public function tester(User $user, Adoption $adoption)
+    {
+        if ($adoption->listed_by === $user->id) {
+            return Response::deny('It is your own pet!', 403);
+        }
+        return Response::allow();
+    }
+
 }
